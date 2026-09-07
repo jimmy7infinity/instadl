@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f5f2;
+  --surface: #fffcf7;
+  --ink: #1b1c19;
+  --teal: #0f6e62;
+  --gold: #d4b45a;
+  --line: #d9d4c8;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-teal: var(--teal);
+  --color-gold: var(--gold);
+  --color-line: var(--line);
+  --font-sans: var(--font-source);
+  --font-display: var(--font-outfit);
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.viewfinder {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.viewfinder::before,
+.viewfinder::after,
+.viewfinder .vf-br,
+.viewfinder .vf-bl {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.viewfinder::before,
+.viewfinder::after {
+  content: "";
+}
+
+.viewfinder::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--teal);
+  border-left: 2px solid var(--teal);
+}
+
+.viewfinder::after {
+  top: -1px;
+  right: -1px;
+  border-top: 2px solid var(--teal);
+  border-right: 2px solid var(--teal);
+}
+
+.viewfinder .vf-bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 2px solid var(--teal);
+  border-left: 2px solid var(--teal);
+}
+
+.viewfinder .vf-br {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid var(--teal);
+  border-bottom: 2px solid var(--teal);
+}
+
+.contact-frame {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.contact-frame-on {
+  border-color: var(--teal);
+}
+
+.viewfinder:focus-within {
+  border-color: color-mix(in srgb, var(--teal) 55%, var(--line));
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
